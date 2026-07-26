@@ -268,11 +268,18 @@
       font-variant-numeric: lining-nums tabular-nums;
     }
     .hero-fact span { color: #b9bdd4; font-size: .76rem; }
-    .hero-media { position: relative; min-height: 590px; }
+    .hero-media {
+      position: relative;
+      width: min(100%, 560px);
+      margin-left: auto;
+    }
     .hero-image {
       width: 100%;
-      height: 550px;
+      height: auto;
+      max-height: 500px;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
+      object-position: center right;
       border: 1px solid rgba(255,255,255,.18);
       border-radius: 34px;
       box-shadow: 0 34px 90px rgba(0,0,0,.34);
@@ -328,8 +335,10 @@
     .promise-image-wrap { position: relative; }
     .promise-image {
       width: 100%;
+      max-height: 410px;
       aspect-ratio: 4 / 3;
       object-fit: cover;
+      object-position: center;
       border-radius: 28px;
       box-shadow: var(--shadow);
     }
@@ -365,10 +374,12 @@
     .axis-card h3 { margin: 15px 0 6px; font-size: 1rem; }
     .axis-card p { margin: 0; color: var(--ink-soft); font-size: .84rem; }
 
-    .format-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .format-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
     .format-card {
       position: relative;
-      min-height: 270px;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
       padding: 28px;
       background: var(--white);
       border: 1px solid var(--line);
@@ -389,12 +400,13 @@
     }
     .format-card .icon-box { position: relative; z-index: 2; }
     .format-card h3 { position: relative; z-index: 2; margin: 22px 0 9px; font-size: 1.3rem; }
-    .format-card p { position: relative; z-index: 2; margin: 0; color: var(--ink-soft); font-size: .91rem; }
+    .format-card p { position: relative; z-index: 2; margin: 0 0 24px; color: var(--ink-soft); font-size: .91rem; }
     .format-meta {
-      position: absolute;
-      left: 28px;
-      bottom: 25px;
+      position: relative;
+      z-index: 2;
+      align-self: flex-start;
       display: inline-flex;
+      margin-top: auto;
       padding: 6px 10px;
       color: var(--violet-dark);
       background: var(--violet-pale);
@@ -443,6 +455,13 @@
     }
     .cycle:nth-child(2) { background: rgba(69,200,216,.09); }
     .cycle:nth-child(3) { background: rgba(255,125,114,.08); }
+    .cycle-head {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
     .cycle .age {
       display: inline-flex;
       padding: 7px 11px;
@@ -455,7 +474,7 @@
     }
     .cycle:nth-child(2) .age { background: #83deea; }
     .cycle:nth-child(3) .age { background: #ffa49c; }
-    .cycle .icon { width: 31px; height: 31px; margin: 23px 0 15px; color: #d6d1ff; }
+    .cycle .icon { width: 31px; height: 31px; margin: 0; color: #d6d1ff; }
     .cycle h3 { color: var(--white); }
     .cycle p { margin: 0; color: #c7cae0; font-size: .9rem; }
 
@@ -485,15 +504,17 @@
     .bonus.highlight .icon-box { color: var(--white); background: rgba(255,255,255,.13); }
     .bonus.highlight .bonus-number, .bonus.highlight p { color: #ddd9ff; }
 
-    .speaker-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .speaker-grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
     .speaker {
+      display: grid;
+      grid-template-columns: 280px 1fr;
       overflow: hidden;
       background: var(--white);
       border: 1px solid var(--line);
       border-radius: 24px;
       box-shadow: var(--shadow-soft);
     }
-    .speaker-top { position: relative; height: 360px; overflow: hidden; }
+    .speaker-top { position: relative; height: 100%; min-height: 390px; overflow: hidden; }
     .speaker img { width: 100%; height: 100%; object-fit: cover; }
     .speaker.pompeia img { object-position: center 38%; }
     .speaker.paulo img { object-position: center 22%; }
@@ -511,9 +532,19 @@
       font-size: .74rem;
       font-weight: 700;
     }
-    .speaker-copy { padding: 27px; }
+    .speaker-copy { padding: 34px; align-self: center; }
     .speaker-copy h3 { font-size: 1.5rem; }
-    .speaker-copy p { margin: 0; color: var(--ink-soft); font-size: .88rem; }
+    .speaker-instagram {
+      display: inline-flex;
+      margin: 0 0 15px;
+      color: var(--violet-dark);
+      font-size: .84rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .speaker-instagram:hover { text-decoration: underline; }
+    .speaker-copy p { margin: 0; color: var(--ink-soft); font-size: .9rem; line-height: 1.72; }
+    .speaker-copy p + p { margin-top: 13px; color: var(--ink); font-weight: 600; }
 
     .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
     .audience {
@@ -572,6 +603,7 @@
     .group-callout .icon-box { color: #67dfb5; background: rgba(91,221,174,.12); }
     .group-callout strong { display: block; margin-bottom: 3px; color: #a3f0d5; }
     .group-callout p { margin: 0; color: #cceee3; font-size: .83rem; }
+    .mobile-only { display: none; }
     .price-card {
       padding: 35px;
       color: var(--ink);
@@ -580,6 +612,20 @@
       border-radius: 26px;
       box-shadow: 0 34px 90px rgba(0,0,0,.28);
     }
+    .group-offer-banner {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 13px;
+      margin-bottom: 24px;
+      padding: 17px;
+      color: #0c5d44;
+      background: linear-gradient(135deg, #dff7ed, #effcf7);
+      border: 1px solid #a9e8d2;
+      border-radius: 18px;
+    }
+    .group-offer-banner .icon-box { width: 46px; height: 46px; color: #11855f; background: rgba(17,133,95,.1); }
+    .group-offer-banner strong { display: block; margin-bottom: 3px; }
+    .group-offer-banner p { margin: 0; color: #337661; font-size: .78rem; }
     .price-card .tag {
       display: inline-flex;
       padding: 7px 11px;
@@ -668,11 +714,11 @@
     @media (max-width: 1020px) {
       .hero-grid, .promise-grid, .content-shell, .offer-grid { grid-template-columns: 1fr; }
       .hero-copy { max-width: 790px; }
-      .hero-media { width: min(100%, 720px); margin-inline: auto; }
+      .hero-media { width: min(100%, 620px); margin-inline: auto; }
       .sticky-title { position: static; }
-      .speaker-grid { gap: 18px; }
-      .speaker-top { height: 320px; }
       .floating-note { right: 14px; }
+      .desktop-only { display: none; }
+      .mobile-only { display: grid; }
     }
 
     @media (max-width: 760px) {
@@ -702,18 +748,21 @@
       .hero-actions .btn { width: 100%; }
       .hero-facts { grid-template-columns: 1fr; }
       .hero-fact { min-height: auto; }
-      .hero-media { min-height: 410px; }
-      .hero-image { height: 390px; border-radius: 24px; }
+      .hero-media { min-height: 0; }
+      .hero-image { width: 100%; height: auto; max-height: none; aspect-ratio: 4 / 3; border-radius: 24px; }
       .hero-image-shade { border-radius: 24px; }
-      .hero-badge { right: 10px; bottom: -6px; width: 150px; padding: 16px; }
+      .hero-badge { right: 10px; bottom: 12px; width: 150px; padding: 16px; }
       .hero-chip { left: 10px; top: 16px; max-width: 185px; }
       .axis-grid, .format-grid, .cycle-grid, .bonus-grid, .speaker-grid, .audience-grid { grid-template-columns: 1fr; }
       .promise-grid { gap: 55px; }
+      .promise-image { max-height: 300px; aspect-ratio: 4 / 3; }
       .floating-note { position: relative; right: auto; bottom: auto; margin: -24px 14px 0; }
-      .format-card { min-height: 250px; }
+      .format-card { min-height: 0; padding: 24px; }
       .topic-card { grid-template-columns: 48px 1fr; padding: 20px; }
       .topic-card .icon-box { width: 48px; height: 48px; }
-      .speaker-top { height: 390px; }
+      .speaker { display: block; }
+      .speaker-top { width: 100%; height: auto; min-height: 0; max-height: 320px; aspect-ratio: 4 / 3; }
+      .speaker-copy { padding: 25px 22px; }
       .price-card { padding: 27px 21px; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-links { justify-content: flex-start; }
@@ -773,7 +822,7 @@
             <a class="btn btn-primary track" data-event="cta_hero_payment" href="https://link.infinitepay.io/pompeia-villachan/VC1DLTMtSQ-NUepHuX00Z-119,00" target="_blank" rel="noopener noreferrer">Garantir minha vaga</a>
             <a class="btn btn-ghost" href="https://chat.whatsapp.com/CGNuWHXmneI2TUpNzuyBc0?s=cl&amp;p=a&amp;ilr=4&amp;amv=1" target="_blank" rel="noopener noreferrer">Entrar no grupo exclusivo</a>
           </div>
-          <p class="hero-note">Pagamento seguro pela InfinitePay. R$ 119,00 em até 3 vezes sem juros.</p>
+          <p class="hero-note">Pagamento seguro pela InfinitePay. R$ 157,00 em até 3 vezes sem juros.</p>
           <ul class="hero-facts" aria-label="Informações principais">
             <li class="hero-fact"><strong>6 horas</strong><span>formação com certificado</span></li>
             <li class="hero-fact"><strong>Híbrida</strong><span>conteúdo gravado e encontro ao vivo</span></li>
@@ -789,7 +838,7 @@
           </div>
           <div class="hero-badge">
             <small>Investimento</small>
-            <strong>R$ 119</strong>
+            <strong>R$ 157</strong>
             <span>até 3x sem juros</span>
           </div>
         </div>
@@ -807,7 +856,7 @@
         </div>
         <div class="reveal">
           <p class="eyebrow">Um olhar integrado</p>
-          <h2>Tecnologia também é uma experiência relacional.</h2>
+          <h2>Tecnologia também é uma experiência relacional</h2>
           <p class="section-lede">Entre o medo e a permissividade, existem critérios. A formação conecta conhecimentos que costumam aparecer separados e os transforma em decisões possíveis na vida real.</p>
           <div class="axis-grid">
             <article class="axis-card">
@@ -839,14 +888,14 @@
       <div class="wrap">
         <div class="center reveal">
           <p class="eyebrow">Como funciona</p>
-          <h2>Conteúdo no seu ritmo. Aplicação em conjunto.</h2>
-          <p class="section-lede">Uma experiência em três movimentos, com linguagem acessível, aprofundamento ao vivo e materiais para sustentar a aplicação depois do encontro.</p>
+          <h2>Conteúdo no seu ritmo. Aplicação em conjunto</h2>
+          <p class="section-lede">Uma experiência em quatro movimentos, com linguagem acessível, aprofundamento ao vivo, materiais para aplicação e acompanhamento após a imersão.</p>
         </div>
         <div class="format-grid">
           <article class="format-card reveal" data-step="01">
             <div class="icon-box"><svg class="icon"><use href="#i-play"></use></svg></div>
             <h3>Prepare-se</h3>
-            <p>Assista a três vídeos curtos sobre vida digital, segurança, desenvolvimento e inteligência artificial.</p>
+            <p>Assista a vídeos sobre vida digital, segurança, desenvolvimento, vínculos e inteligência artificial.</p>
             <span class="format-meta">1h30 gravada</span>
           </article>
           <article class="format-card reveal" data-step="02">
@@ -861,6 +910,12 @@
             <p>Defina uma prioridade e construa uma meta, uma estratégia inicial e um indicador de acompanhamento.</p>
             <span class="format-meta">Plano de ação</span>
           </article>
+          <article class="format-card reveal" data-step="04">
+            <div class="icon-box"><svg class="icon"><use href="#i-clock"></use></svg></div>
+            <h3>Acompanhe os resultados</h3>
+            <p>Participe de um encontro 30 dias após a imersão para esclarecer dúvidas, revisar a implementação e ajustar os planos.</p>
+            <span class="format-meta">1h30 · 30 dias depois</span>
+          </article>
         </div>
       </div>
     </section>
@@ -869,26 +924,26 @@
       <div class="wrap content-shell">
         <div class="sticky-title reveal">
           <p class="eyebrow">Conteúdo da imersão</p>
-          <h2>Fundamentos que orientam escolhas concretas.</h2>
+          <h2>Fundamentos que orientam escolhas concretas</h2>
           <p class="section-lede">Sem fórmulas universais. O objetivo é ampliar sua capacidade de analisar situações, considerar a relação e intervir com mais segurança.</p>
         </div>
         <div>
           <div class="topic-stack">
             <article class="topic-card reveal">
               <div class="icon-box"><svg class="icon"><use href="#i-heart"></use></svg></div>
-              <div><small>Vídeo 1 · 30 minutos</small><h3>Vida digital, desenvolvimento e vínculos</h3><p>Uso passivo, ativo, criativo e mediado. Conteúdo, contexto, finalidade, presença emocional e mediação adulta.</p></div>
+              <div><small>Conteúdo gravado</small><h3>Vida digital, desenvolvimento e vínculos</h3><p>Uso passivo, ativo, criativo e mediado. Conteúdo, contexto, finalidade, presença emocional e mediação adulta.</p></div>
             </article>
             <article class="topic-card reveal">
               <div class="icon-box"><svg class="icon"><use href="#i-shield"></use></svg></div>
-              <div><small>Vídeo 2 · 30 minutos</small><h3>Segurança, redes sociais e proteção emocional</h3><p>Privacidade, exposição, cyberbullying, contatos desconhecidos, controle parental e confiança para pedir ajuda.</p></div>
+              <div><small>Conteúdo gravado</small><h3>Segurança, redes sociais e proteção emocional</h3><p>Privacidade, exposição, cyberbullying, contatos desconhecidos, controle parental e confiança para pedir ajuda.</p></div>
             </article>
             <article class="topic-card reveal">
               <div class="icon-box"><svg class="icon"><use href="#i-spark"></use></svg></div>
-              <div><small>Vídeo 3 · 30 minutos</small><h3>Inteligência artificial, aprendizagem e autonomia</h3><p>Possibilidades, limites, autoria, verificação, privacidade, criatividade e dependência de respostas prontas.</p></div>
+              <div><small>Conteúdo gravado</small><h3>Inteligência artificial, aprendizagem e autonomia</h3><p>Possibilidades, limites, autoria, verificação, privacidade, criatividade e dependência de respostas prontas.</p></div>
             </article>
           </div>
           <div class="live-box reveal">
-            <strong>No encontro ao vivo:</strong> telas e neurodesenvolvimento; sono, atenção e autorregulação; hábitos digitais dos adultos; vínculos familiares; orientação por ciclos; casos práticos; limites, privacidade, cyberbullying e uso de IA.
+            <strong>No encontro ao vivo serão abordados os seguintes temas:</strong> telas e neurodesenvolvimento; sono, atenção e autorregulação; hábitos digitais dos adultos; vínculos familiares; orientação por ciclos; casos práticos; limites; privacidade; cyberbullying e uso de inteligência artificial.
           </div>
         </div>
       </div>
@@ -898,25 +953,22 @@
       <div class="wrap">
         <div class="center reveal">
           <p class="eyebrow eyebrow-light">Orientação por ciclos</p>
-          <h2>Idades diferentes pedem mediações diferentes.</h2>
+          <h2>Idades diferentes pedem mediações diferentes</h2>
           <p class="section-lede">Os mesmos aplicativos, telas ou conflitos não produzem os mesmos efeitos em todas as fases do desenvolvimento.</p>
         </div>
         <div class="cycle-grid">
           <article class="cycle reveal">
-            <span class="age">0 a 5 anos</span>
-            <svg class="icon"><use href="#i-heart"></use></svg>
+            <div class="cycle-head"><svg class="icon"><use href="#i-heart"></use></svg><span class="age">0 a 5 anos</span></div>
             <h3>Interação e co-regulação</h3>
             <p>Brincadeira, linguagem, sono, rotina previsível, conteúdo adequado e mediação próxima.</p>
           </article>
           <article class="cycle reveal">
-            <span class="age">6 a 11 anos</span>
-            <svg class="icon"><use href="#i-shield"></use></svg>
+            <div class="cycle-head"><svg class="icon"><use href="#i-shield"></use></svg><span class="age">6 a 11 anos</span></div>
             <h3>Hábitos e supervisão</h3>
             <p>Combinados claros, conhecimento de jogos e conteúdos, proteção do sono e ensino gradual de segurança.</p>
           </article>
           <article class="cycle reveal">
-            <span class="age">12 a 18 anos</span>
-            <svg class="icon"><use href="#i-spark"></use></svg>
+            <div class="cycle-head"><svg class="icon"><use href="#i-spark"></use></svg><span class="age">12 a 18 anos</span></div>
             <h3>Autonomia e responsabilidade</h3>
             <p>Negociação de critérios, pertencimento, privacidade, redes sociais, autoria e inteligência artificial.</p>
           </article>
@@ -928,7 +980,7 @@
       <div class="wrap">
         <div class="center reveal">
           <p class="eyebrow">Materiais incluídos</p>
-          <h2>Recursos para transformar conteúdo em ação.</h2>
+          <h2>Recursos para transformar conteúdo em ação</h2>
           <p class="section-lede">Todos os materiais do curso ficarão disponíveis por 90 dias para consulta e aplicação em casa, na escola ou no trabalho profissional.</p>
         </div>
         <div class="bonus-grid">
@@ -946,7 +998,7 @@
       <div class="wrap">
         <div class="center reveal">
           <p class="eyebrow">Quem conduz</p>
-          <h2>Psicologia, educação e tecnologia em diálogo.</h2>
+          <h2>Psicologia, educação e tecnologia em diálogo</h2>
           <p class="section-lede">Duas trajetórias complementares para abordar a vida digital sem alarmismo, sem simplificações e sem desconsiderar os riscos.</p>
         </div>
         <div class="speaker-grid">
@@ -957,7 +1009,9 @@
             </div>
             <div class="speaker-copy">
               <h3>Pompéia Villachan-Lyra</h3>
-              <p>Doutora e pós-doutora em Psicologia do Desenvolvimento. Atua há mais de 20 anos com crianças, adolescentes e famílias, integrando desenvolvimento, vínculos e orientação parental.</p>
+              <a class="speaker-instagram" href="https://www.instagram.com/pompeia_villachan_lyra?utm_source=qr&amp;igsh=MW12emVhMDdsMnZnbQ==" target="_blank" rel="noopener noreferrer">@pompeia_villachan_lyra</a>
+              <p>Dra. Pompéia Villachan-Lyra é psicóloga clínica, neuropsicóloga, professora universitária e pesquisadora do desenvolvimento infantil e das relações afetivas. Doutora em Psicologia Cognitiva pela UFPE, com estágio doutoral na Universidade de Utah e pós-doutorado pela Universidade de Lisboa, reúne sólida experiência acadêmica e clínica no atendimento a crianças, adolescentes e famílias, com atuação em desenvolvimento humano, apego, orientação parental, neuropsicologia e Terapia do Esquema. Coautora do Guia “A Psicologia frente ao mundo digital: orientações para a atuação profissional com crianças e adolescentes”, publicado pelo Conselho Federal de Psicologia.</p>
+              <p>Na imersão, contribui com uma abordagem clínica e fundamentada sobre desenvolvimento infantil e adolescente, vínculos afetivos, autorregulação, orientação parental e os impactos do uso das tecnologias nas relações familiares.</p>
             </div>
           </article>
           <article class="speaker paulo reveal">
@@ -967,7 +1021,9 @@
             </div>
             <div class="speaker-copy">
               <h3>Paulo André da Silva</h3>
-              <p>Especialista em tecnologias educacionais e inovação pedagógica. Atua com inteligência artificial na educação, metodologias de ensino e formação de educadores.</p>
+              <a class="speaker-instagram" href="https://www.instagram.com/profe.pa/" target="_blank" rel="noopener noreferrer">@profe.pa</a>
+              <p>Dr. Paulo André da Silva é pedagogo, professor universitário e pesquisador nas áreas de educação, inovação pedagógica e tecnologias digitais. Mestre e doutor em Educação Matemática e Tecnológica pela UFPE, com pós-doutorado em Inovação Pedagógica pela Universidade de Lisboa, coordena o Laboratório de Educação e Inovação do Centro Acadêmico de Vitória da UFPE e desenvolve atividades de ensino, pesquisa, extensão e formação docente sobre inteligência artificial, aprendizagem e cultura digital.</p>
+              <p>Na imersão, contribui com uma abordagem crítica e prática sobre letramento digital, segurança, redes sociais, inteligência artificial e uso educacional das tecnologias.</p>
             </div>
           </article>
         </div>
@@ -978,7 +1034,7 @@
       <div class="wrap">
         <div class="center reveal">
           <p class="eyebrow">Para quem é</p>
-          <h2>Uma proposta. Diferentes contextos de aplicação.</h2>
+          <h2>Uma proposta. Diferentes contextos de aplicação</h2>
         </div>
         <div class="audience-grid">
           <article class="audience reveal"><div class="icon-box"><svg class="icon"><use href="#i-heart"></use></svg></div><h3>Pais e cuidadores</h3><p>Para construir limites, proteger o sono, manejar conflitos e fortalecer o diálogo e os vínculos.</p></article>
@@ -992,16 +1048,17 @@
       <div class="wrap offer-grid">
         <div class="offer-copy reveal">
           <p class="eyebrow eyebrow-light">Inscrições abertas</p>
-          <h2>Construa uma relação mais consciente com a tecnologia.</h2>
+          <h2>Construa uma relação mais consciente com a tecnologia</h2>
           <p>Uma formação introdutória e aplicada para trocar respostas automáticas por critérios mais seguros, considerando desenvolvimento, contexto e vínculo.</p>
           <ul class="offer-list">
             <li><svg class="icon"><use href="#i-check"></use></svg>1h30 de conteúdo gravado</li>
             <li><svg class="icon"><use href="#i-check"></use></svg>4h30 de encontro ao vivo</li>
+            <li><svg class="icon"><use href="#i-check"></use></svg>Encontro de acompanhamento de 1h30 após 30 dias</li>
             <li><svg class="icon"><use href="#i-check"></use></svg>Todos os materiais digitais incluídos</li>
             <li><svg class="icon"><use href="#i-check"></use></svg>Acesso ao curso por 90 dias</li>
             <li><svg class="icon"><use href="#i-check"></use></svg>Certificado de 6 horas</li>
           </ul>
-          <div class="group-callout">
+          <div class="group-callout mobile-only">
             <div class="icon-box"><svg class="icon"><use href="#i-message"></use></svg></div>
             <div>
               <strong>Condição especial para o grupo exclusivo</strong>
@@ -1010,9 +1067,16 @@
           </div>
         </div>
         <div class="price-card reveal">
+          <div class="group-offer-banner desktop-only">
+            <div class="icon-box"><svg class="icon"><use href="#i-message"></use></svg></div>
+            <div>
+              <strong>Condição especial para o grupo exclusivo</strong>
+              <p>Entre no grupo de WhatsApp para receber a condição especial de valor antes de concluir o pagamento.</p>
+            </div>
+          </div>
           <span class="tag">Inscrição individual</span>
           <p class="price-label">Investimento total</p>
-          <div class="price">R$ 119</div>
+          <div class="price">R$ 157</div>
           <p class="installments">Em até 3 vezes sem juros</p>
           <a class="btn btn-primary btn-block track" data-event="cta_offer_payment" href="https://link.infinitepay.io/pompeia-villachan/VC1DLTMtSQ-NUepHuX00Z-119,00" target="_blank" rel="noopener noreferrer">Fazer o pagamento</a>
           <a class="btn btn-outline btn-block form-link track" data-event="cta_registration_form" href="https://docs.google.com/forms/d/e/1FAIpQLSeMKlzpT3mfO4ZihR3C4epumG6D5YvETI4g_funSg79FglO7Q/viewform" target="_blank" rel="noopener noreferrer">Preencher o formulário de inscrição</a>
@@ -1038,7 +1102,7 @@
           </details>
           <details class="reveal">
             <summary>Como será distribuída a carga horária?</summary>
-            <p>Serão três vídeos de aproximadamente 30 minutos e 4h30 de formação ao vivo, totalizando 6 horas certificadas.</p>
+            <p>O conteúdo gravado será organizado em vídeos sobre os temas indicados, com carga horária total de 1h30. A imersão também terá 4h30 de formação ao vivo, totalizando 6 horas certificadas, além de um encontro de acompanhamento de 1h30 realizado 30 dias depois.</p>
           </details>
           <details class="reveal">
             <summary>Por quanto tempo terei acesso?</summary>
@@ -1075,7 +1139,7 @@
     </div>
   </footer>
 
-  <a class="mobile-buy track" data-event="cta_mobile_payment" href="https://link.infinitepay.io/pompeia-villachan/VC1DLTMtSQ-NUepHuX00Z-119,00" target="_blank" rel="noopener noreferrer">Garantir vaga · R$ 119</a>
+  <a class="mobile-buy track" data-event="cta_mobile_payment" href="https://link.infinitepay.io/pompeia-villachan/VC1DLTMtSQ-NUepHuX00Z-119,00" target="_blank" rel="noopener noreferrer">Garantir vaga · R$ 157</a>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TLE0FFPEQH"></script>
   <script>

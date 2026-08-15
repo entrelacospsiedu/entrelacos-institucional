@@ -373,44 +373,6 @@ footer{background:var(--ink);color:#E9E1D6;padding:52px 0 30px;text-align:center
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}html{scroll-behavior:auto;}.reveal{opacity:1!important;transform:none!important;}}
 :focus-visible{outline:3px solid var(--sage);outline-offset:3px;border-radius:6px;}
-
-/* ---------- Materiais ---------- */
-.material-card{
-  background:var(--white);border:1px solid var(--line);border-radius:20px;
-  padding:28px;margin-bottom:20px;box-shadow:var(--shadow);
-  display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;
-}
-.material-icon{
-  width:52px;height:52px;border-radius:14px;background:var(--terra-wash);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.5rem;
-}
-.material-body{flex:1;min-width:200px;}
-.material-body h3{margin-bottom:6px;}
-.material-meta{font-size:.82rem;color:var(--ink-soft);margin-bottom:10px;}
-.materiais-empty{text-align:center;color:var(--ink-soft);padding:20px 0;}
-.modal-overlay{
-  display:none;position:fixed;inset:0;background:rgba(59,52,46,.55);
-  z-index:200;align-items:center;justify-content:center;padding:20px;
-}
-.modal-overlay.open{display:flex;}
-.modal{
-  background:var(--cream);border-radius:22px;max-width:420px;width:100%;
-  padding:32px;box-shadow:var(--shadow-lift);position:relative;
-}
-.modal-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--ink-soft);}
-.modal h3{margin-bottom:6px;}
-.modal p.sub{color:var(--ink-soft);font-size:.9rem;margin-bottom:20px;}
-.field{margin-bottom:14px;}
-.field label{display:block;font-size:.82rem;font-weight:600;margin-bottom:6px;color:var(--ink);}
-.field input{
-  width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);
-  font-family:'Mulish',sans-serif;font-size:.95rem;background:var(--white);
-}
-.field input:focus{outline:none;border-color:var(--terra);}
-.modal .btn{width:100%;margin-top:6px;}
-.modal-status{font-size:.85rem;margin-top:12px;text-align:center;}
-.modal-status.error{color:var(--terra);}
-.modal-status.success{color:var(--sage-deep);}
 </style>
 </head>
 <body>
@@ -433,7 +395,6 @@ footer{background:var(--ink);color:#E9E1D6;padding:52px 0 30px;text-align:center
       <a href="#abordagem">Abordagem</a>
       <a href="#pilares">Atuação</a>
       <a href="#formacao">Formação</a>
-      <a href="#materiais">Materiais</a>
       <a href="#contato" class="nav-cta">Fale conosco</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
@@ -446,7 +407,6 @@ footer{background:var(--ink);color:#E9E1D6;padding:52px 0 30px;text-align:center
     <a href="#pilares">Áreas de atuação</a>
     <a href="#formacao">Formação e cursos</a>
     <a href="#publicacoes">Livros</a>
-    <a href="#materiais">Materiais</a>
     <a href="#contato">Fale conosco</a>
   </nav>
 </header>
@@ -657,62 +617,6 @@ footer{background:var(--ink);color:#E9E1D6;padding:52px 0 30px;text-align:center
     </div>
   </section>
 
-  <!-- ============ MATERIAIS ============ -->
-  <section class="materiais" id="materiais">
-    <div class="wrap">
-      <div class="reveal" style="text-align:center;max-width:56ch;margin:0 auto 40px;">
-        <span class="eyebrow">Materiais gratuitos</span>
-        <h2>Slides, e-books e recursos</h2>
-        <p>Preencha seus dados uma vez e baixe qualquer material desta seção.</p>
-      </div>
-
-      <!--
-        Pra adicionar um novo material: copie um bloco "material-card" inteiro,
-        troque data-titulo, data-arquivo (caminho do PDF, pasta materiais/ nesta
-        mesma pasta do site) e o texto visível.
-
-        Pra TIRAR um material do ar: apague o bloco "material-card" inteiro dele.
-        O arquivo PDF pode continuar na pasta materiais/, sem problema — só não
-        vai aparecer mais listado aqui.
-      -->
-      <div id="materiaisWrap">
-
-        <div class="material-card reveal" data-titulo="Quando aprender se torna um desafio" data-arquivo="materiais/palestra-java-2026.pdf">
-          <div class="material-icon">📄</div>
-          <div class="material-body">
-            <h3>Quando aprender se torna um desafio</h3>
-            <div class="material-meta">Slides em PDF · JAVAPSIC — IV Jornada de Avaliação Psicológica do Recife · Profa. Dra. Pompéia Villachan-Lyra</div>
-            <p>Avaliando Transtorno de Aprendizagem na prática clínica.</p>
-          </div>
-          <button class="btn btn-primary btn-baixar">Quero baixar</button>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal">
-      <button class="modal-close" id="modalClose" aria-label="Fechar">✕</button>
-      <h3 id="modalTitulo">Baixar material</h3>
-      <p class="sub">É rapidinho — só nome e e-mail.</p>
-      <form id="modalForm">
-        <input type="hidden" name="material" id="fieldMaterial">
-        <input type="hidden" name="_subject" value="Novo download - Materiais EntreLaços">
-        <div class="field">
-          <label for="fieldNome">Nome</label>
-          <input type="text" id="fieldNome" name="nome" required>
-        </div>
-        <div class="field">
-          <label for="fieldEmail">E-mail</label>
-          <input type="email" id="fieldEmail" name="email" required>
-        </div>
-        <button type="submit" class="btn btn-primary" id="modalSubmit">Baixar agora</button>
-        <p class="modal-status" id="modalStatus"></p>
-      </form>
-    </div>
-  </div>
-
   <!-- ============ FAQ ============ -->
   <section class="faq">
     <div class="wrap">
@@ -827,61 +731,6 @@ footer{background:var(--ink);color:#E9E1D6;padding:52px 0 30px;text-align:center
     revealEls.forEach(function(el){ el.classList.add('visible'); });
   }
 
-  // Materiais — formulário de download (Formspree)
-  var FORMSPREE_ENDPOINT = "https://formspree.io/f/mgawzjln";
-  var overlay = document.getElementById('modalOverlay');
-  if (overlay) {
-    var mForm = document.getElementById('modalForm');
-    var mStatus = document.getElementById('modalStatus');
-    var mTitulo = document.getElementById('modalTitulo');
-    var fieldMaterial = document.getElementById('fieldMaterial');
-    var mSubmitBtn = document.getElementById('modalSubmit');
-    var arquivoAtual = '';
-
-    document.querySelectorAll('.btn-baixar').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var card = btn.closest('.material-card');
-        arquivoAtual = card.dataset.arquivo;
-        mTitulo.textContent = 'Baixar: ' + card.dataset.titulo;
-        fieldMaterial.value = card.dataset.titulo;
-        mStatus.textContent = '';
-        mStatus.className = 'modal-status';
-        mForm.reset();
-        fieldMaterial.value = card.dataset.titulo;
-        overlay.classList.add('open');
-      });
-    });
-
-    document.getElementById('modalClose').addEventListener('click', function(){ overlay.classList.remove('open'); });
-    overlay.addEventListener('click', function(e){ if (e.target === overlay) overlay.classList.remove('open'); });
-
-    mForm.addEventListener('submit', function(e){
-      e.preventDefault();
-      mSubmitBtn.disabled = true;
-      mSubmitBtn.textContent = 'Enviando...';
-      mStatus.textContent = '';
-      mStatus.className = 'modal-status';
-      fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(mForm)
-      }).then(function(res){
-        if (res.ok) {
-          mStatus.textContent = 'Prontinho! Seu download vai começar agora.';
-          mStatus.classList.add('success');
-          setTimeout(function(){ window.open(arquivoAtual, '_blank'); }, 600);
-        } else {
-          throw new Error('Falha no envio');
-        }
-      }).catch(function(){
-        mStatus.textContent = 'Deu um erro ao enviar. Tenta de novo ou chama no WhatsApp.';
-        mStatus.classList.add('error');
-      }).finally(function(){
-        mSubmitBtn.disabled = false;
-        mSubmitBtn.textContent = 'Baixar agora';
-      });
-    });
-  }
 </script>
 </body>
 </html>

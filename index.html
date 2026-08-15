@@ -869,7 +869,7 @@ footer{background:var(--ink);color:#E9E1D6;padding:52px 0 30px;text-align:center
         if (res.ok) {
           mStatus.textContent = 'Prontinho! Seu download vai começar agora.';
           mStatus.classList.add('success');
-          setTimeout(function(){ window.location.href = arquivoAtual; }, 600);
+          setTimeout(function(){ window.open(arquivoAtual, '_blank'); }, 600);
         } else {
           throw new Error('Falha no envio');
         }
